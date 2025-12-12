@@ -1248,9 +1248,15 @@
 
       try {
         // 方法1: 使用 Google Places API (需要 API Key)
-        // 请替换 YOUR_API_KEY 和 YOUR_PLACE_ID
-        const API_KEY = 'YOUR_GOOGLE_PLACES_API_KEY';
-        const PLACE_ID = 'YOUR_GOOGLE_PLACE_ID'; // 例如: ChIJ... (从 Google Maps URL 获取)
+        // 获取步骤：
+        // 1. 访问 https://console.cloud.google.com/
+        // 2. 创建项目并启用 "Places API"
+        // 3. 创建 API 密钥（API & Services > Credentials > Create Credentials > API Key）
+        // 4. 设置 API 密钥限制（限制为 Places API 和你的网站域名）
+        // 5. 获取 Place ID：在 Google Maps 找到你的地点，URL 中包含 Place ID
+        // 详细说明请查看 GOOGLE_API_SETUP.md 文件
+        const API_KEY = 'AIzaSyBVvo_S4vWZQI6lG7OKoPI63-RcEFvYMqY'; // 替换为你的实际 API Key
+        const PLACE_ID = 'ChIJFyLwLJ3Z3IARyzH_FfHznX4'; // 替换为你的实际 Place ID (例如: ChIJ...)
         
         // 如果提供了 API Key，使用 Google Places API
         if (API_KEY !== 'YOUR_GOOGLE_PLACES_API_KEY' && PLACE_ID !== 'YOUR_GOOGLE_PLACE_ID') {
