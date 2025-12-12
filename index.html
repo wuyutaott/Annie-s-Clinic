@@ -1036,7 +1036,7 @@
       });
     });
 
-    // 分享按钮功能：打开导航应用
+    // 分享按钮功能：直接打开 Google Maps
     shareBtn.addEventListener("click", () => {
       const address = "Ander Acupuncture and herbs, 1310 W Stewart Dr Ste 302, Orange, CA 92868";
       const addressEncoded = encodeURIComponent(address);
@@ -1045,31 +1045,15 @@
       const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
       const isAndroid = /Android/.test(navigator.userAgent);
       
-      // 在移动设备上，使用 Web Share API 分享地址（会打开导航应用选择界面）
-      if (navigator.share && (isIOS || isAndroid)) {
-        navigator.share({
-          title: "Ander Acupuncture and herbs",
-          text: `Get directions to: ${address}`,
-          url: `https://www.google.com/maps/search/?api=1&query=${addressEncoded}`
-        }).catch((err) => {
-          // 如果分享失败，直接打开地图链接
-          openMapsLink();
-        });
-      } else {
-        // 桌面端或分享 API 不可用时，直接打开地图
-        openMapsLink();
-      }
+      // 统一使用 Google Maps 链接，会自动在移动设备上打开应用或网页
+      const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${addressEncoded}`;
       
-      function openMapsLink() {
-        let mapsUrl;
-        if (isIOS) {
-          // iOS: 使用 Apple Maps
-          mapsUrl = `http://maps.apple.com/?q=${addressEncoded}`;
-        } else {
-          // Android 或其他: 使用 Google Maps
-          mapsUrl = `https://www.google.com/maps/search/?api=1&query=${addressEncoded}`;
-        }
-        window.open(mapsUrl, '_blank');
+      if (isIOS || isAndroid) {
+        // 移动设备: 直接跳转到 Google Maps（会自动打开应用或网页版）
+        window.location.href = googleMapsUrl;
+      } else {
+        // 桌面端: 在新标签页打开
+        window.open(googleMapsUrl, '_blank');
       }
     });
 
