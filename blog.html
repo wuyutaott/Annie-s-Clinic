@@ -301,17 +301,39 @@
       fill: currentColor;
     }
 
+    /* 桌面端菜单按钮始终显示 */
     .menu-btn,
     .share-btn {
-      display: none;
+      display: flex;
     }
 
-    @media (max-width: 900px) {
-      .menu-btn,
-      .share-btn {
-        display: flex;
+    /* 桌面端小panel菜单样式 */
+    @media (min-width: 901px) {
+      .menu-overlay {
+        background: rgba(0, 0, 0, 0.3);
       }
 
+      .menu-panel {
+        width: 320px;
+        max-width: 320px;
+        box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+      }
+
+      .menu-content {
+        padding: 30px 20px;
+      }
+
+      .menu-items a {
+        font-size: 18px;
+      }
+
+      .menu-items li {
+        margin-bottom: 16px;
+      }
+    }
+
+    /* 移动端隐藏导航链接 */
+    @media (max-width: 900px) {
       .nav-links {
         display: none;
       }
