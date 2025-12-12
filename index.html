@@ -262,6 +262,20 @@
       color: var(--primary);
     }
 
+    .menu-items a.active {
+      color: var(--primary);
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .menu-items a.active::before {
+      content: "●";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-size: 12px;
+    }
+
     .menu-social {
       display: flex;
       justify-content: center;
@@ -693,11 +707,15 @@
         </svg>
       </button>
       <div class="nav-left">
-        <div class="logo-mark">
-          <img src="/icon.svg" alt="Ander Acupuncture and herbs logo" />
-        </div>
+        <a href="index.html">
+          <div class="logo-mark">
+            <img src="/icon.svg" alt="Ander Acupuncture and herbs logo" />
+          </div>
+        </a>
         <div>
-          <div class="clinic-name-cn">Ander Acupuncture and herbs</div>
+          <a href="index.html">
+            <div class="clinic-name-cn">Ander Acupuncture and herbs</div>
+          </a>
         </div>
       </div>
       <div class="nav-links">
@@ -730,9 +748,10 @@
     </div>
     <div class="menu-content">
       <ul class="menu-items">
-        <li><a href="#news">NEWS</a></li>
-        <li><a href="#career">CAREER</a></li>
-        <li><a href="#blog">BLOG</a></li>
+        <li><a href="index.html" class="active">HOME</a></li>
+        <li><a href="news.html">NEWS</a></li>
+        <li><a href="blog.html">BLOG</a></li>
+        <li><a href="career.html">CAREER</a></li>
       </ul>
     </div>
     <div class="menu-social">
