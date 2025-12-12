@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <title>某某中医养生妇科诊所 | Acupuncture & Herbal Wellness</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="专注女性健康的中医针灸与草药诊所，调理痛症、不孕不育、月经失调、更年期、失眠、消化及亚健康状态，为您打造舒适、安心的养生空间。" />
+  <style>
+    :root {
+      --primary: #8c4b3f;     /* 暖棕红 - 中药/木头的感觉 */
+      --accent: #c69a5b;      /* 金色系点缀 */
+      --bg: #faf7f2;          /* 温暖米色背景 */
+      --text: #333333;
+      --muted: #777777;
+      --max-width: 1120px;
+      --radius: 16px;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #eee0d0;
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--primary);
+    }
+
+    .clinic-name-cn {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .clinic-name-en {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        background 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(140, 75, 63, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 30px rgba(140, 75, 63, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid rgba(140, 75, 63, 0.4);
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+    }
+
+    section {
+      margin-bottom: 72px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      margin-bottom: 8px;
+      letter-spacing: 0.06em;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: 0.16em;
+      margin-bottom: 16px;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(198, 154, 91, 0.12);
+      color: var(--primary);
+      font-size: 12px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 18px;
+    }
+
+    .hero .hero-note {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .hero-photo {
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #fff;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 36px;
+      align-items: flex-start;
+    }
+
+    .about-card {
+      background: #fff;
+      padding: 22px 22px 20px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--primary);
+    }
+
+    .about-card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .about-list {
+      margin-top: 8px;
+      padding-left: 18px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .about-list li {
+      margin-bottom: 4px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #f3ebe1;
+      color: var(--primary);
+      border: 1px solid rgba(140, 75, 63, 0.35);
+    }
+
+    /* Specialties */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 18px 18px 16px;
+      border-radius: 14px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.05);
+      border-top: 3px solid rgba(140, 75, 63, 0.4);
+      font-size: 14px;
+    }
+
+    .card h3 {
+      font-size: 15px;
+      margin-bottom: 6px;
+      color: var(--primary);
+    }
+
+    .card ul {
+      margin-top: 4px;
+      padding-left: 18px;
+      color: #555;
+    }
+
+    .card ul li {
+      margin-bottom: 3px;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.02);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    /* First visit */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      font-size: 14px;
+    }
+
+    .step {
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px 18px;
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.05);
+    }
+
+    .step-number {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .step h3 {
+      font-size: 15px;
+      margin-bottom: 6px;
+      color: var(--primary);
+    }
+
+    /* Contact */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 28px;
+      align-items: flex-start;
+    }
+
+    .contact-card {
+      background: #fff;
+      padding: 18px 20px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .contact-list {
+      list-style: none;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .contact-list li + li {
+      margin-top: 4px;
+    }
+
+    .hours {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .disclaimer {
+      font-size: 11px;
+      color: #999;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    footer {
+      border-top: 1px solid #e6d6c4;
+      padding: 16px 20px 28px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero,
+      .about-grid,
+      .cards,
+      .gallery-grid,
+      .steps,
+      .contact-wrap {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero {
+        margin-top: 8px;
+      }
+      .hero h1 {
+        font-size: 26px;
+      }
+      section {
+        margin-bottom: 56px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="nav-left">
+        <div class="logo-mark">和</div>
+        <div>
+          <div class="clinic-name-cn">某某中医养生 · 妇科诊所</div>
+          <div class="clinic-name-en">
+            Holistic Acupuncture & Herbal Wellness
+          </div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#about">关于医生</a>
+        <a href="#specialties">诊疗特色</a>
+        <a href="#environment">诊所环境</a>
+        <a href="#first-visit">首次就诊</a>
+        <a href="#contact">预约与联系</a>
+      </div>
+      <a href="#contact" class="btn btn-primary">预约就诊</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div>
+        <div class="hero-tag">
+          中医妇科 · 针灸 · 草药 · 养生调理
+        </div>
+        <h1>
+          给女性一个
+          <span>安心、被照顾</span>
+          的地方
+        </h1>
+        <p>
+          医生拥有十年国内妇产科临床经验，结合传统中医针灸、草药及养生调理，
+          细致地陪伴每一位女性走过不同生命阶段——从月经、备孕到更年期。
+        </p>
+        <p class="hero-note">
+          我们相信，真正的健康不仅是身体指标的正常，更是情绪、睡眠、消化、
+          激素与生活节奏的整体平衡。
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">立即预约</a>
+          <a href="tel:123-456-7890" class="btn btn-outline">电话咨询：123-456-7890</a>
+        </div>
+        <div class="hero-note">
+          Serving the local community with gentle, personalized acupuncture and
+          herbal care. English & 中文服务。
+        </div>
+      </div>
+      <div class="hero-photo">
+        <!-- 替换为你的“医生办公桌”照片 -->
+        <img src="doctor-office.jpg" alt="中医师在诊所中接诊" />
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="section-subtitle">ABOUT THE PRACTITIONER</div>
+      <h2 class="section-title">关于医生 · 专注女性健康的中医师</h2>
+
+      <div class="about-grid">
+        <div>
+          <p style="margin-bottom:10px;">
+            医生早年在国内三甲医院妇产科工作多年，拥有丰富的妇科、产科临床经验。
+            移居美国后，系统学习并取得本地针灸、中医执照，将现代医学背景与传统中医
+            理念结合，为北美女性提供温和而有力的支持。
+          </p>
+          <p>
+            她擅长通过细致的问诊，了解生活方式、情绪状态、工作压力与家庭节奏，
+            为每位来诊者制定个性化的调理方案，而不是“一刀切”的标准流程。
+          </p>
+
+          <ul class="about-list">
+            <li>十余年妇产科与中医临床经验</li>
+            <li>专注女性月经、不孕不育、更年期及相关内分泌问题</li>
+            <li>重视身心一体的调理：睡眠、情绪、消化、免疫力</li>
+            <li>诊所氛围以温暖、舒适、放松为主，而非冷冰冰的“医院感”</li>
+          </ul>
+
+          <div class="badge-row">
+            <span class="badge">中医妇科 · 主打项目</span>
+            <span class="badge">一对一诊疗</span>
+            <span class="badge">针灸 + 草药 + 生活方式整合</span>
+          </div>
+        </div>
+        <div class="about-card">
+          <h3>诊所提供的主要疗法 / Treatments</h3>
+          <ul class="about-list">
+            <li>针灸 Acupuncture</li>
+            <li>中草药处方 Chinese Herbal Formulas</li>
+            <li>拔罐 Cupping</li>
+            <li>艾灸 Moxibustion</li>
+            <li>经络推拿 Meridian Bodywork</li>
+            <li>养生茶饮 / 药膳建议 Medicinal Diet Guidance</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Specialties -->
+    <section id="specialties">
+      <div class="section-subtitle">CLINIC SPECIALTIES</div>
+      <h2 class="section-title">诊疗特色 · 主要服务范围</h2>
+
+      <div class="cards">
+        <div class="card">
+          <h3>妇科 · 月经 · 激素平衡</h3>
+          <ul>
+            <li>月经不调、痛经、量少或量多</li>
+            <li>多囊卵巢综合征（PCOS）辅助调理</li>
+            <li>经前情绪波动（PMS）、乳房胀痛</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>备孕 · 不孕不育支持</h3>
+          <ul>
+            <li>自然备孕调理、试管前后辅助</li>
+            <li>宫寒、卵泡质量、黄体功能支持</li>
+            <li>流产后体质恢复与情绪关怀</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>更年期综合调理</h3>
+          <ul>
+            <li>潮热盗汗、心烦易怒、睡眠不安</li>
+            <li>情绪波动、焦虑、乏力</li>
+            <li>体重管理、骨质流失预防</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>痛症管理</h3>
+          <ul>
+            <li>颈肩腰背痛、坐骨神经痛</li>
+            <li>头痛、偏头痛、慢性疲劳</li>
+            <li>产后恢复相关疼痛</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>消化 · 睡眠 · 亚健康</h3>
+          <ul>
+            <li>胃胀胃痛、便秘、腹泻、食欲不振</li>
+            <li>入睡困难、易醒、多梦</li>
+            <li>免疫力低下、易感冒、长期疲惫</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>减重 · 美容 · 体质调理</h3>
+          <ul>
+            <li>针灸配合饮食与运动减重</li>
+            <li>中医美容、气色调理</li>
+            <li>体质评估与日常养生建议</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Environment / Gallery -->
+    <section id="environment">
+      <div class="section-subtitle">CLINIC ENVIRONMENT</div>
+      <h2 class="section-title">诊所环境 · 安静舒适的养生空间</h2>
+      <p style="max-width:700px; margin-bottom:18px;">
+        从等候区到诊疗室，都以简洁、干净、温暖为主调，
+        加入适量中式元素和植物，希望您一走进来，就能放慢脚步、安心坐下。
+      </p>
+
+      <div class="gallery-grid">
+        <!-- 这里的图片路径替换成你上传的那几张 -->
+        <div class="gallery-item">
+          <img src="waiting-area.jpg" alt="等候区与中式座椅" />
+        </div>
+        <div class="gallery-item">
+          <img src="treatment-room-1.jpg" alt="诊疗床与针灸设备" />
+        </div>
+        <div class="gallery-item">
+          <img src="treatment-room-2.jpg" alt="私人诊疗室" />
+        </div>
+        <div class="gallery-item">
+          <img src="herb-cabinet.jpg" alt="中药柜与办公区" />
+        </div>
+      </div>
+    </section>
+
+    <!-- First Visit -->
+    <section id="first-visit">
+      <div class="section-subtitle">FIRST VISIT</div>
+      <h2 class="section-title">首次就诊 · 会经历什么？</h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">STEP 1</div>
+          <h3>详细问诊与体质评估</h3>
+          <p>
+            医生会了解您的主诉症状、既往病史、作息饮食、情绪与压力来源，
+            结合中医望闻问切，为您辨证分型，找到“根源”所在。
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-number">STEP 2</div>
+          <h3>个性化治疗方案</h3>
+          <p>
+            根据体质与目前状态，医生会与您一起制定针灸次数、草药调理、
+            以及可在家配合完成的小习惯，如睡眠、饮食、简单穴位按压等。
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-number">STEP 3</div>
+          <h3>温和、可持续的调理</h3>
+          <p>
+            多数情况建议以数周至数月为一个调理周期，
+            治疗节奏会根据您的反馈、身体变化及时调整，
+            让改善自然发生，而不是勉强身体。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="section-subtitle">CONTACT & APPOINTMENT</div>
+      <h2 class="section-title">预约与联系</h2>
+
+      <div class="contact-wrap">
+        <div class="contact-card">
+          <h3>诊所信息 Clinic Info</h3>
+          <ul class="contact-list">
+            <li>📍 地址：填入诊所地址 Address Line, City, State ZIP</li>
+            <li>📞 电话：<a href="tel:123-456-7890">123-456-7890</a></li>
+            <li>✉️ 邮箱：<a href="mailto:info@example.com">info@example.com</a></li>
+            <li>🗓 预约：电话、短信或微信（可放二维码）</li>
+          </ul>
+          <div class="hours">
+            营业时间示例：<br />
+            周一–周五 9:30am – 6:00pm · 周六 预约制 · 周日休息
+          </div>
+
+          <div style="margin-top:14px;">
+            <a href="tel:123-456-7890" class="btn btn-primary">电话预约</a>
+            <a href="#" class="btn btn-outline" style="margin-left:8px;">
+              在线留言 / Online Inquiry
+            </a>
+          </div>
+
+          <div class="disclaimer">
+            本网站提供的是一般性健康与养生信息，仅供参考，并不能替代您的
+            家庭医生或专科医生的诊断与治疗。如有急性或严重症状，请及时联系
+            紧急医疗服务。
+          </div>
+        </div>
+
+        <div>
+          <p style="font-size:14px; color:#555;">
+            如果您正在经历持续的疼痛、月经与激素相关问题、备孕压力、睡眠与
+            情绪困扰，欢迎与我们联系。<br /><br />
+            很多来诊的女性都会说：“在这里，我终于可以好好地把自己的故事说完，
+            而不是被匆匆打断。” 我们期待在一个安静、温暖的空间里，
+            认真聆听您的身体与心。
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> 某某中医养生 · 妇科诊所. All Rights Reserved.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
