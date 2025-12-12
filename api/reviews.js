@@ -24,12 +24,26 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "placeId is required" });
     }
 
-    const apiKey = process.env.GOOGLE_MAPS_API_KEY;
+    // 尝试多个可能的环境变量名称
+    const apiKey = process.env.GOOGLE_MAPS_API_KEY 
+                || process.env.GOOGLE_PLACES_API_KEY
+                || process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+    
     if (!apiKey) {
-      console.error('Missing GOOGLE_MAPS_API_KEY environment variable');
+      // 调试信息：列出所有包含 GOOGLE 的环境变量
+      const googleEnvVars = Object.keys(process.env)
+        .filter(key => key.toUpperCase().includes('GOOGLE'))
+        .map(key => `${key}: ${process.env[key] ? '***' : 'undefined'}`);
+      
+      console.error('Missing Google Maps API Key');
+      console.error('Available Google-related env vars:', googleEnvVars);
+      console.error('All env var keys:', Object.keys(process.env).filter(k => k.includes('GOOGLE')));
+      
       return res.status(500).json({ 
         error: "Server configuration error: Missing API key",
-        status: "INTERNAL_ERROR"
+        status: "INTERNAL_ERROR",
+        hint: "Please set GOOGLE_MAPS_API_KEY in Vercel environment variables",
+        availableVars: googleEnvVars
       });
     }
 
