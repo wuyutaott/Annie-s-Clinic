@@ -134,6 +134,7 @@ export default async function handler(req, res) {
     const data = await response.json();
     console.log('=== Google API Data ===');
     console.log('  Status:', data.status);
+    console.log('  Error Message:', data.error_message);
     console.log('  Has result:', !!data.result);
     if (data.result) {
       console.log('  Place name:', data.result.name);
