@@ -1,5 +1,8 @@
 // Vercel Serverless Function for Google Places API
 // 环境变量: GOOGLE_MAPS_API_KEY (在 Vercel 项目设置中配置)
+// 
+// 注意: 如果看到 url.parse() 弃用警告，这通常来自 Vercel 的内部实现，
+// 而不是此代码。本代码已使用 WHATWG URL API 来构建 URL。
 
 export default async function handler(req, res) {
   // ========== 调试信息：请求开始 ==========
@@ -103,14 +106,16 @@ export default async function handler(req, res) {
     }
 
     // ========== 调试信息：准备调用 Google API ==========
-    const url =
-      "https://maps.googleapis.com/maps/api/place/details/json" +
-      `?place_id=${encodeURIComponent(placeId)}` +
-      "&fields=name,rating,reviews,url,user_ratings_total" +
-      `&key=${encodeURIComponent(apiKey)}`;
+    // 使用 WHATWG URL API 替代字符串拼接，避免弃用警告
+    const apiUrl = new URL('https://maps.googleapis.com/maps/api/place/details/json');
+    apiUrl.searchParams.set('place_id', placeId);
+    apiUrl.searchParams.set('fields', 'name,rating,reviews,url,user_ratings_total');
+    apiUrl.searchParams.set('key', apiKey);
+    
+    const url = apiUrl.toString();
     
     console.log('=== Calling Google Places API ===');
-    console.log('  URL (without key):', url.replace(/key=[^&]+/, 'key=***'));
+    console.log('  URL (without key):', apiUrl.toString().replace(/key=[^&]+/, 'key=***'));
     console.log('  Place ID:', placeId);
 
     const response = await fetch(url);
