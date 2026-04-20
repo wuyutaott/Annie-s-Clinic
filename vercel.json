@@ -21,6 +21,10 @@
     {
       "source": "/blog-detail-2",
       "destination": "/blog-detail-2.html"
+    },
+    {
+      "source": "/blog-detail-3",
+      "destination": "/blog-detail-3.html"
     }
   ],
   "headers": [
